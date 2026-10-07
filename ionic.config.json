@@ -1,0 +1,7 @@
+{
+  "name": "nocciola",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
