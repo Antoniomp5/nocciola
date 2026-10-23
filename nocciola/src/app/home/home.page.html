@@ -1,35 +1,74 @@
-<!-- Contenido de: src/app/home/home.page.html -->
-
-<!-- La cabecera principal, visible en la parte superior de la pantalla -->
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Lista de Tareas
-    </ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>Nocciola</ion-title>
   </ion-toolbar>
+  <ion-button color="secondary">...</ion-button>
+  <ion-button color="danger">...</ion-button>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <!-- Esta segunda cabecera crea el efecto de título grande que se encoge al hacer scroll -->
+<ion-content [fullscreen]="true" class="ion-padding">
+
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Lista de Helados</ion-title>
+      <ion-title size="large">Lista de helados</ion-title>
+      <!-- En tu home.page.html -->
+      <ion-item class="card-sombreada">...</ion-item>
     </ion-toolbar>
   </ion-header>
 
-  <!-- Directiva *ngIf: este div solo existirá en el DOM si la condición es verdadera -->
-  <div *ngIf="listaDeTareas.length === 0" class="mensaje-vacio">
-    <p>¡Enhorabuena!</p>
-    <p>No tienes tareas pendientes.</p>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <h2>Nuestros helados</h2>
+      </ion-col>
+    </ion-row>
+
+
+
+    <!-- Recorremos la lista definida en el TS -->
+    <ion-row *ngFor="let tarea of listaDeTareas">
+
+      <ion-col size="12" size-md="4">
+        <img src="https://placehold.co/400x250/8d6e63/ffffff?text=Helado" [alt]="tarea.titulo" class="imagen-helado"
+          width="200" />
+      </ion-col>
+
+      <ion-col size="12" size-md="8">
+        <!-- Mostramos el título de cada tarea -->
+        <h3>{{ tarea.titulo }}</h3>
+
+        <!-- Mostramos el estado según disponible -->
+        <p *ngIf="tarea.disponible; else noDisponible">
+          Disponible
+        </p>
+
+        <ng-template #noDisponible>
+          <p>No disponible</p>
+        </ng-template>
+
+        <ion-button>
+          Contactar
+        </ion-button>
+
+
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
+
+<ion-footer>
+  <div class="container">
+    <span class="text-muted">&copy; 2026
+      Antonio Hernández Gilabert - DAH - 2º DAW - Curso 26/27
+    </span>
+    <ion-toolbar>
+      <ion-title size="large">Lista de helados</ion-title>
+      <!-- En tu home.page.html -->
+      <ion-item class="card-sombreada">...</ion-item>
+    </ion-toolbar>
   </div>
 
-  <!-- 
-    Directiva *ngFor: este es el bucle. 
-    - Por cada objeto 'tarea' que haya en el array 'listaDeTareas'...
-    - ...Angular creará una instancia de nuestro componente <app-task-item>.
-  -->
-  <app-task-item
-    *ngFor="let tarea of listaDeTareas"
-    [tarea]="tarea"> <!-- Property Binding: le pasamos el objeto 'tarea' actual al @Input del componente hijo -->
-  </app-task-item>
-</ion-content>
+
+</ion-footer>

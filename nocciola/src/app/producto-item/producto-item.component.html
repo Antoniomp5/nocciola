@@ -1,0 +1,42 @@
+<ion-card>
+  <!-- Cabecera: Nombre y sabor del helado -->
+  <ion-card-header>
+    <ion-card-title>{{ elemento?.sabor }}</ion-card-title>
+    <ion-card-subtitle>{{ elemento?.tipo }} (Tina, Cono, Paleta)</ion-card-subtitle>
+  </ion-card-header>
+
+  <!-- Contenido con la lista de detalles del helado -->
+  <ion-card-content>
+    <ion-list lines="none">
+      
+      <!-- Precio utilizando el Pipe de moneda de Angular -->
+      <ion-item>
+        <ion-icon slot="start" name="cash-outline"></ion-icon>
+        <ion-label>
+          <p>Precio</p>
+          <h2>{{ elemento?.precio }} €</h2>
+        </ion-label>
+      </ion-item>
+
+      <!-- Coberturas o Toppings -->
+      <ion-item>
+        <ion-icon slot="start" name="ice-cream-outline"></ion-icon>
+        <ion-label>
+          <p>Topping incluido</p>
+          <h2>{{ elemento?.topping }}</h2>
+        </ion-label>
+      </ion-item>
+
+      <!-- Disponibilidad con Property Binding [color] -->
+      <ion-item>
+        <!-- Cambia a verde si hay stock, o rojo si está agotado -->
+        <ion-icon slot="start" name="ellipse" [color]="elemento?.disponible ? 'success' : 'danger'"></ion-icon>
+        <ion-label>
+          <p>Disponibilidad</p>
+          <h2>{{ elemento?.disponible ? '¡Disponible hoy!' : 'Agotado temporalmente' }}</h2>
+        </ion-label>
+      </ion-item>
+
+    </ion-list>
+  </ion-card-content>
+</ion-card>
