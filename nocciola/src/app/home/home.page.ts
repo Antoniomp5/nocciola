@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { IonHeader, IonToolbar, IonTitle, IonContent, IonGrid, IonRow, IonCol, IonButton, IonItem, IonFooter } from '@ionic/angular';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonGrid, 
+  IonRow, IonCol, IonButton, IonItem, IonFooter,
+  IonRouterLink, IonButtons, IonIcon } from '@ionic/angular';
 
 
 export interface Tarea {
@@ -24,7 +26,11 @@ export interface Tarea {
     IonGrid,
     IonRow,
     IonCol,
-    IonButton, IonFooter],
+    IonButton,
+    IonFooter,
+    IonRouterLink,
+    IonButtons, 
+    IonIcon ],
 })
 export class HomePage {
   listaDeTareas: Tarea[] = [

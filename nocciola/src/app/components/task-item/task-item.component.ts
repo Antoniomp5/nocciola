@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
 import { Tarea } from '../../interfaces/helados.model';
 
 @Component({
@@ -14,3 +14,4 @@ export class TaskItemComponent implements OnInit {
 
   ngOnInit() {}
 }
+
