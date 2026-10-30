@@ -1,30 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonApp, IonRouterOutlet } from '@ionic/angular';
-import { SettingsService } from './src/app/services/settings.service';
+import { SettingsService } from './services/settings.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   imports: [IonApp, IonRouterOutlet],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   
   constructor(private settingsService: SettingsService) {}
 
-  // Angular ejecutará este método automáticamente al iniciar, 
-  // aunque no implementemos la interfaz OnInit explícitamente.
-  // ¡IMPORTANTE! Añadimos 'async' para esperar a la base de datos.
-  async ngOnInit() {
+  // Angular ejecuta este método al iniciar el componente.
+  // Esperamos a recuperar la preferencia antes de aplicar el tema.
+  async ngOnInit(): Promise<void> {
     await this.cargarPreferencias();
   }
 
-  async cargarPreferencias() {
+  async cargarPreferencias(): Promise<void> {
     // Leemos el ajuste guardado
     const modoOscuro = await this.settingsService.get('modo_oscuro');
     
-    // Si era true, activamos el modo oscuro inmediatamente
-    if (modoOscuro) {
-      document.body.classList.add('dark');
-    }
+    document.body.classList.toggle('dark', modoOscuro);
+    document.body.classList.toggle('light', !modoOscuro);
   }
 }

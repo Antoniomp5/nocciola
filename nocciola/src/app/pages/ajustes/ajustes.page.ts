@@ -26,9 +26,8 @@ export class AjustesPage implements OnInit {
   // ¡IMPORTANTE! Añadimos 'async' para poder usar 'await' dentro
   async ngOnInit() {
     // Al entrar, cargamos el valor guardado
-    // Si no existe (es la primera vez), settingsService.get devuelve null, 
-    // así que usamos '|| false' para que sea false por defecto.
-    this.modoOscuro = await this.settingsService.get('modo_oscuro') || false;
+    // Si no existe (es la primera vez), el servicio devuelve false.
+    this.modoOscuro = await this.settingsService.get('modo_oscuro');
     
     // Aplicamos el tema inmediatamente al entrar por si acaso
     this.aplicarTema(this.modoOscuro);
@@ -44,8 +43,7 @@ export class AjustesPage implements OnInit {
   }
 
   aplicarTema(esOscuro: boolean) {
-    // Añadimos o quitamos la clase 'dark' al body del documento
-    // Esto activa los estilos que definiremos en variables.scss
     document.body.classList.toggle('dark', esOscuro);
+    document.body.classList.toggle('light', !esOscuro);
   }
 }

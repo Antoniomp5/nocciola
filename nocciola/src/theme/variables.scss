@@ -12,6 +12,23 @@
     --ion-color-primary-tint: #b8a87f;
   
 }
+@mixin dark-theme-variables {
+  --ion-color-primary: #44391c;
+  --ion-color-primary-rgb: 66,140,255;
+  --ion-color-primary-contrast: #ffffff;
+  
+  --ion-background-color: #131722;
+  --ion-text-color: #DDDBD7;
+}
 
+@media (prefers-color-scheme: dark) {
+  body:not(.light) {
+    @include dark-theme-variables;
+  }
+}
 
-
+/* El tema oscuro solo se activa cuando se añade manualmente la clase .dark. */
+body.dark {
+  @include dark-theme-variables;
+}
+    
