@@ -1,5 +1,5 @@
 import { Component, Input, OnInit} from '@angular/core';
-import { Tarea } from '../../interfaces/helados.model';
+import type { Helado } from '../../models/helado.model';
 
 @Component({
   selector: 'app-task-item',
@@ -8,7 +8,7 @@ import { Tarea } from '../../interfaces/helados.model';
   standalone: true,
 })
 export class TaskItemComponent implements OnInit {
-  @Input() tarea!: Tarea;
+  @Input() helado!: Helado;
 
   constructor() {}
 

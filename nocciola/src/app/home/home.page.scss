@@ -1,27 +1,101 @@
-#container {
-  text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+.home-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 8px 0 24px;
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+.home-container > h1 {
+  margin: 8px 8px 20px;
+  font-size: clamp(1.5rem, 4vw, 2rem);
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
+.helados-grid {
+  padding: 0;
+}
 
-  color: #8c8c8c;
+.helado-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 16px;
+  background: var(--ion-card-background, var(--ion-background-color));
+  box-shadow: 0 4px 16px rgb(0 0 0 / 12%);
+}
 
+.imagen-helado {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.helado-card-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 16px;
+}
+
+.helado-card-content h2 {
+  margin: 0;
+  font-size: 1.15rem;
+  line-height: 1.35;
+}
+
+.helado-card-content p {
+  margin: 8px 0 16px;
+}
+
+.disponible {
+  color: var(--ion-color-success);
+}
+
+.no-disponible {
+  color: var(--ion-color-medium);
+}
+
+.helado-card-actions {
+  display: grid;
+  gap: 8px;
+  margin-top: auto;
+}
+
+.helado-card-actions ion-button {
   margin: 0;
 }
 
-#container a {
-  text-decoration: none;
+.nuevo-helado {
+  width: 100%;
+  max-width: 560px;
+  margin: 28px auto 0;
+  padding: 16px;
+  border-radius: 16px;
+  background: var(--ion-card-background, var(--ion-background-color));
+  box-shadow: 0 4px 16px rgb(0 0 0 / 12%);
+}
+
+.nuevo-helado h2 {
+  margin: 0 0 12px;
+  font-size: 1.25rem;
+}
+
+.nuevo-helado ion-item {
+  --background: transparent;
+}
+
+.footer-content {
+  padding: 12px 16px;
+  text-align: center;
+  background-color: var(--ion-background-color);
+  color: var(--ion-color-medium);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+@media (min-width: 576px) {
+  .helado-card-actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }

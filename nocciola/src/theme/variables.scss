@@ -1,24 +1,25 @@
 // For information on how to create your own theme, please refer to:
 // https://ionicframework.com/docs/theming/
 /* 🌟 Fuerza a la aplicación a mantenerse en tu tema claro personalizado */
-:root{
-  
-    --ion-background-color: #eeeade;
-    --ion-text-color: #222428;
-    --ion-color-primary: #ad965a;
-    --ion-color-primary-rgb: 173, 150, 90; 
-    --ion-color-primary-contrast: #000000;
-    --ion-color-primary-shade: #ad8e3e; 
-    --ion-color-primary-tint: #b8a87f;
-  
+  :root {
+  --ion-background-color: #eeeade;
+  --ion-text-color: #222428;
+  --ion-color-primary: #ad965a;
+  --ion-color-primary-rgb: 173, 150, 90;
+  --ion-color-primary-contrast: #000000;
+  --ion-color-primary-shade: #9c8751;
+  --ion-color-primary-tint: #b8a87a;
+  --ion-font-family: 'Google Sans', sans-serif;
 }
+
 @mixin dark-theme-variables {
   --ion-color-primary: #44391c;
-  --ion-color-primary-rgb: 66,140,255;
+  --ion-color-primary-rgb: 68, 57, 28;
   --ion-color-primary-contrast: #ffffff;
-  
+  --ion-color-primary-shade: #3d3319;
+  --ion-color-primary-tint: #5a5135;
   --ion-background-color: #131722;
-  --ion-text-color: #DDDBD7;
+  --ion-text-color: #dddbd7;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -31,4 +32,6 @@
 body.dark {
   @include dark-theme-variables;
 }
-    
+
+
+

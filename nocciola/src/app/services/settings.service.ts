@@ -1,11 +1,12 @@
-import { Service } from '@angular/core';
+import { Injectable } from '@angular/core';
 
-@Service()
+@Injectable({ providedIn: 'root' })
 export class SettingsService {
-  set(arg0: string, modoOscuro: boolean) {
-    throw new Error('Method not implemented.');
+  async set(key: string, value: boolean): Promise<void> {
+    localStorage.setItem(key, String(value));
   }
-  get(arg0: string): boolean | PromiseLike<boolean> {
-    throw new Error('Method not implemented.');
+
+  async get(key: string): Promise<boolean> {
+    return localStorage.getItem(key) === 'true';
   }
 }

@@ -1,103 +1,68 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="primary">
     <ion-title>Nocciola</ion-title>
-  </ion-toolbar>
-  <ion-button color="secondary">...</ion-button>
-  <ion-button color="danger">...</ion-button>
-</ion-header>
-<ion-header [translucent]="true">
-  <ion-toolbar color="primary">
-    <ion-title>Mis Tareas</ion-title>
-    
-    <!-- El contenedor de botones debe ir fuera de ion-title -->
     <ion-buttons slot="end">
-      <ion-button
-        fill="clear"
-        (click)="alternarTema()"
-        [attr.aria-label]="modoOscuro ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'"
-      >
-        <ion-icon
-          slot="icon-only"
-          [name]="modoOscuro ? 'moon-outline' : 'sunny-outline'"
-        ></ion-icon>
+      <ion-button fill="clear" (click)="alternarTema()"
+        [attr.aria-label]="modoOscuro ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro'">
+        <ion-icon slot="icon-only" [name]="modoOscuro ? 'moon-outline' : 'sunny-outline'"></ion-icon>
       </ion-button>
       <ion-button routerLink="/ajustes">
         <ion-icon slot="icon-only" name="settings-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
-    
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
+  <main class="home-container">
+    <h1>Nuestros helados</h1>
 
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Lista de helados</ion-title>
-      <!-- En tu home.page.html -->
-      <ion-item class="card-sombreada">...</ion-item>
-    </ion-toolbar>
-        <!-- CORRECTO: ion-buttons está fuera de ion-title -->
-    <ion-buttons slot="end">
-      <ion-button routerLink="/ajustes">
-        <ion-icon slot="icon-only" name="settings-outline"></ion-icon>
+    <ion-grid class="helados-grid">
+      <ion-row>
+        <ion-col *ngFor="let helado of listaDeHelados" size="12" size-md="6" size-xl="4">
+          <article class="helado-card">
+            <img
+              src="https://chefeel.com/chefgeneralfiles/2022/05/hela-1-880x762.jpg"
+              [alt]="helado.titulo"
+              class="imagen-helado"
+            />
+            <div class="helado-card-content">
+              <h2>{{ helado.titulo }}</h2>
+              <p [class.disponible]="helado.disponible" [class.no-disponible]="!helado.disponible">
+                {{ helado.disponible ? 'Disponible' : 'No disponible' }}
+              </p>
+              <div class="helado-card-actions">
+                <ion-button expand="block">Contactar</ion-button>
+                <ion-button expand="block" fill="outline">Información</ion-button>
+              </div>
+            </div>
+          </article>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <section class="nuevo-helado">
+      <h2>Añadir un helado</h2>
+      <ion-item>
+        <ion-input
+          label="Nombre del helado"
+          label-placement="floating"
+          placeholder="Ej. Helado de vainilla"
+          [(ngModel)]="nuevoHelado.titulo"
+        ></ion-input>
+      </ion-item>
+      <ion-button expand="block" (click)="agregarHelado()" class="ion-margin-top">
+        Añadir helado
       </ion-button>
-    </ion-buttons>
-  </ion-header>
-
-  <ion-grid>
-    <ion-row>
-      <ion-col size="12">
-        <h2>Nuestros helados</h2>
-      </ion-col>
-    </ion-row>
-
-
-
-    <!-- Recorremos la lista definida en el TS -->
-    <ion-row *ngFor="let tarea of listaDeTareas">
-
-      <ion-col size="12" size-md="4">
-        <img src="https://placehold.co/400x250/8d6e63/ffffff?text=Helado" [alt]="tarea.titulo" class="imagen-helado"
-          width="200" />
-      </ion-col>
-
-      <ion-col size="12" size-md="8">
-        <!-- Mostramos el título de cada tarea -->
-        <h3>{{ tarea.titulo }}</h3>
-
-        <!-- Mostramos el estado según disponible -->
-        <p *ngIf="tarea.disponible; else noDisponible">
-          Disponible
-        </p>
-
-        <ng-template #noDisponible>
-          <p>No disponible</p>
-        </ng-template>
-
-        <ion-button>
-          Contactar
-        </ion-button>
-
-
-      </ion-col>
-
-    </ion-row>
-  </ion-grid>
-
+    </section>
+  </main>
 </ion-content>
 
-<ion-footer>
-  <div class="container">
-    <span class="text-muted">&copy; 2026
+<ion-footer [translucent]="false">
+  <div class="footer-content">
+    <span>
+      &copy; 2026
       Antonio Hernández Gilabert - DAH - 2º DAW - Curso 26/27
     </span>
-    <ion-toolbar>
-      <ion-title size="large">Lista de helados</ion-title>
-      <!-- En tu home.page.html -->
-      <ion-item class="card-sombreada">...</ion-item>
-    </ion-toolbar>
   </div>
-
-
 </ion-footer>

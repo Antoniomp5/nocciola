@@ -4,7 +4,9 @@ import { SettingsService } from './services/settings.service';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
   templateUrl: 'app.component.html',
+  styleUrls: ['app.component.scss'],
   imports: [IonApp, IonRouterOutlet],
 })
 export class AppComponent implements OnInit {
@@ -24,4 +26,6 @@ export class AppComponent implements OnInit {
     document.body.classList.toggle('dark', modoOscuro);
     document.body.classList.toggle('light', !modoOscuro);
   }
+    
+  
 }
